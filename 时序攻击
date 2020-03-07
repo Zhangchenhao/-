@@ -1,0 +1,26 @@
+import numpy as np
+
+password = "78955623"
+s = [1]
+input_password = input("please input the password your guess: ")
+# 密码限制于数字0-9，且八位
+i = 0
+while input_password[i] == password[i]:
+    i = i + 1
+else:
+    print("the same password number is %d" % (i))
+new_password = list(input_password)
+old_password = list(password)
+new_password_array = np.array(new_password)
+old_password_array = np.array(old_password)
+while i <=7:
+    new_password_array[i] = 0
+    while new_password_array[i] != old_password_array[i]:
+        new_password_array[i] = int(new_password_array[i]) + 1
+        if new_password_array[i] == old_password_array[i]:
+            print(new_password_array)
+            break
+    i =i+1
+    if i==8:
+        break
+print(new_password_array)
